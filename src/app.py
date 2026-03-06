@@ -35,3 +35,44 @@ def technova_bot(user_query):
 # --- Test the system ---
 if __name__ == "__main__":
     print(technova_bot("My laptop is broken and I hate this service! my email is test@me.com"))
+
+
+
+
+
+import re
+import logging
+
+# Set up Logging (MLOps: Monitoring)
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+
+def analyze_sentiment(user_input):
+    angry_words = ['angry', 'bad', 'broken', 'hate', 'stupid', 'worst', 'help']
+    sentiment = "ANGRY" if any(word in user_input.lower() for word in angry_words) else "NEUTRAL"
+    # Log the sentiment result for monitoring
+    logger.info(f"Sentiment Detected: {sentiment} for input: {user_input[:20]}...")
+    return sentiment
+
+def mask_pii(text):
+    email_pattern = r'[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}'
+    masked_text = re.sub(email_pattern, "[PRIVATE_EMAIL]", text)
+    if "[PRIVATE_EMAIL]" in masked_text:
+        logger.warning("Privacy Alert: PII was detected and masked.")
+    return masked_text
+
+def technova_bot(user_query):
+    logger.info("New query received.")
+    safe_query = mask_pii(user_query)
+    sentiment = analyze_sentiment(safe_query)
+    
+    if sentiment == "ANGRY":
+        response = "🚨 [PRIORITY MODE] We are prioritizing your technical issue."
+    else:
+        response = "I am checking the TechNova technical manual..."
+        
+    return f"Response: {response}"
+
+if __name__ == "__main__":
+    # Simulate a user session
+    print(technova_bot("I am so angry! My email is test@me.com"))
