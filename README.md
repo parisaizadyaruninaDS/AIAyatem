@@ -1,4 +1,4 @@
-# AIAyatem
+# AIsystem
 AI systemPrjChatbot
 ## 🚀 How to Run (Local Deployment)
 To ensure reproducibility, this project is containerized using Docker.
