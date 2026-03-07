@@ -5,8 +5,8 @@
 
      2. Usage in System
           The system uses Retrieval-Augmented Generation (RAG) to query this data.
-          Innovation (INN):** By grounding the model in this specific data, we reduce hallucinations.
-          Research (RES):** This allows us to assess the accuracy of the bot against a fixed set of technical facts.
+          Innovation (INN):  By grounding the model in this specific data, we reduce hallucinations.
+          Research (RES): This allows us to assess the accuracy of the bot against a fixed set of technical facts.
 
      3. Data Privacy
     All data in this folder is technical and contains no personally identifiable information (PII).ser inputs are scrubbed before interacting with this data.
