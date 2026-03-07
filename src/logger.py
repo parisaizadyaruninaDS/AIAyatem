@@ -2,7 +2,6 @@ import csv
 import logging
 from datetime import datetime
 
-# Standard logging for the console
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s')
 logger = logging.getLogger(__name__)
 
