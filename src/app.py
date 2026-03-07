@@ -62,5 +62,11 @@ def technova_bot(user_query):
         
     return f"Response: {response}"
 
+
 if __name__ == "__main__":
-    print(technova_bot("I am so angry! My email is test@me.com"))
+    print("--- TechNova Support Bot Active ---")
+    while True:
+        user_input = input("User: ")
+        if user_input.lower() in ['exit', 'quit']:
+            break
+        print(technova_bot(user_input))
